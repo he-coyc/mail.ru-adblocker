@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "mail.ru AdBlocker - Блокировщик рекламы",
+  "description":"Блокировка рекламы в почте mail.ru",
+  "version": "1.0",
+  "action": {
+    "default_icon": {
+      "256": "images/icon/icon-256.png",
+      "128": "images/icon/icon-128.png",
+      "64": "images/icon/icon-64.png",
+      "48": "images/icon/icon-48.png",
+      "32": "images/icon/icon-32.png",
+      "16": "images/icon/icon-16.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://e.mail.ru/*"],
+      "js": ["inject.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
