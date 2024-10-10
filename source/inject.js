@@ -1,7 +1,8 @@
 var mutationObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-        removeSideAd();
-        removeTopAd();
+        try{removeSideAd()}catch{}
+        try{removeTopAd()}catch{}
+        
     });
   });
 mutationObserver.observe(document.body, {
@@ -14,9 +15,9 @@ mutationObserver.observe(document.body, {
 });
 
 function removeSideAd(){
-        let potentialAd = document.querySelector('.application-mail__layout.application-mail__layout_main').children[0];
+    let potentialAd = document.querySelector('.application.app.application_new-toolbar').children[0].children[0].children[0].children[1].children[0];
         if(potentialAd.children.length > 3) {
-            potentialAd = potentialAd.children[1].children;
+            potentialAd = potentialAd.children;
             if(potentialAd.length >= 5){
                 let divNum = 0, divClassLengthMax = 0;
                 for(i = 0; i < potentialAd.length - 1; i++){
@@ -26,16 +27,21 @@ function removeSideAd(){
                     }
                 }
                 let ad = potentialAd[divNum];
-                ad.style.display = 'none';
-                //ad.style.backgroundColor = 'red';
+                removeElement(ad);
             }
         }
 }
 
 function removeTopAd(){
-    let potentialAd = document.querySelector('.new-menu').parentElement.children[0].children[0].children[0];
-    let ad = potentialAd;
-    ad.style.display = 'none';
-    //ad.style.backgroundColor = 'red';
+    let ad = document.querySelector('.new-menu').parentElement.children[0].children[0].children[0];
+    removeElement(ad);
     document.querySelector('.new-menu').parentElement.children[2].style.height = '100%';
+}
+
+function viewElement(element){
+    element.style.backgroundColor = 'red';
+    element.style.border = '1px dashed black';
+}
+function removeElement(element){
+    element.style.display = 'none';
 }
