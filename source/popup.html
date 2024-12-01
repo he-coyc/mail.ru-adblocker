@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru" >
+    <head>
+        <meta charset="UTF-8">
+        <title>mail.ru AdBlocker</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                font-size: 16px;
+                color: snow;
+            }
+            background{
+                display: flex;
+                flex-direction: column;
+                width: 400px;
+                height: 200px;
+                background-color: rgb(33, 45, 49);
+            }
+            footer{
+                display: flex;
+                flex-direction: row;
+                height: 25%;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(0, 0, 0, 0.25);
+
+            }
+            content{
+                display: flex;
+                flex-direction: row;
+                height: 75%;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid black;
+                border-radius: 8px;
+                margin: 4px;
+                background-color: rgba(0, 0, 0, 0.25);
+
+            }
+            p{
+                width: 70%;
+                margin: 8px;
+            }
+            a{
+                text-decoration: none;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+
+            /* The switch - the box around the slider */
+            .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            }
+
+            /* The slider */
+            .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            input:checked + .slider {
+            background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+            -webkit-transform: translateX(20px);
+            -ms-transform: translateX(20px);
+            transform: translateX(20px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+            border-radius: 34px;
+            }
+
+            .slider.round:before {
+            border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <background>
+            <content>
+                <label class="switch">
+                    <input type="checkbox" id="mailru_block">
+                    <span class="slider round"></span>
+                </label>
+                <p>
+                    Блокировать рекламу
+                </p>
+            </content>
+            <content>
+                <label class="switch">
+                    <input type="checkbox" id="mailru_highlight">
+                    <span class="slider round"></span>
+                </label>
+                <p>
+                    Подсвечивать вместо блокировки
+                </p>
+            </content>
+            <content>
+                <span style="text-align: center;" class="userinfo">
+                    ⚠️ Для того, чтобы изменения вступили в силу, необходимо обновить страницу ^-^
+                </span>
+            </content>
+            <footer>
+              <a href="https://he-coyc.ru" target="_blank" rel="noopener noreferrer">сделал he_coyc</a>
+            </footer>
+        </background>
+        <script src="popup.js"></script>
+    </body>
+</html>
+
+<!-- ,
+  "content_scripts": [
+    {
+      "matches": ["*://e.mail.ru/*"],
+      "js": ["inject.js"],
+      "run_at": "document_end"
+    }
+  ], -->
