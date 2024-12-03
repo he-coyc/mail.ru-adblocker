@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "mail.ru AdBlocker - Блокировщик рекламы",
   "description":"Блокировка рекламы в почте mail.ru",
-  "version": "1.2",
+  "version": "1.3",
   "action": {
     "default_icon": {
       "256": "images/icon/icon-256.png",

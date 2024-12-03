@@ -14,12 +14,14 @@ function updateSwitches(sw1, sw2){
 }
 
 function checkExtensionLocalStorage(){
-    chrome.storage.local.get(['adblockerdata'], function(data) {
-      let json = data.adblockerdata
-      let mailru_block = json.blockall
-      let mailru_highlight = json.highlightall
-      updateSwitches(mailru_block, mailru_highlight)
-    })
+    try {
+        chrome.storage.local.get(['mailruadblockerstorage'], function(data) {
+            let json = data.mailruadblockerstorage
+            let mailru_block = json.blockall
+            let mailru_highlight = json.highlightall
+            updateSwitches(mailru_block, mailru_highlight)
+          })
+    } catch (e) {}
 }
 
 function switches(id){
@@ -27,11 +29,12 @@ function switches(id){
         if(id == 1) swHighlightall.checked = false
         if(id == 2) swBlockall.checked = false
     }
-    chrome.storage.local.set({'adblockerdata': {
+    chrome.storage.local.set({'mailruadblockerstorage': {
         'blockall' : swBlockall.checked,
         'highlightall' : swHighlightall.checked
       }
     })
 }
 
+updateSwitches(true, false)
 checkExtensionLocalStorage()

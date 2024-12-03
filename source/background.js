@@ -2,17 +2,16 @@ let mailru_block = true
 let mailru_highlight = false
 
 function checkExtensionLocalStorage(){
-  chrome.storage.local.get(['adblockerdata'], function(data) {
-
-    if((data.adblockerdata.blockall != true && data.adblockerdata.blockall != false) || (data.adblockerdata.highlightall != true && data.adblockerdata.highlightall != false)){
-      chrome.storage.local.set({'adblockerdata': {
+  chrome.storage.local.get(['mailruadblockerstorage'], function(data) {
+    if((data.mailruadblockerstorage.blockall != true && data.mailruadblockerstorage.blockall != false) || (data.mailruadblockerstorage.highlightall != true && data.mailruadblockerstorage.highlightall != false)){
+      chrome.storage.local.set({'mailruadblockerstorage': {
         'blockall' : true,
         'highlightall' : false
       }})
       return 0
     }
 
-    let json = data.adblockerdata
+    let json = data.mailruadblockerstorage
     mailru_block = json.blockall
     mailru_highlight = json.highlightall
     
@@ -21,8 +20,8 @@ function checkExtensionLocalStorage(){
 }
 
 async function getTabId(){
-    var tabs = await chrome.tabs.query({active: true, currentWindow: true})
-    return tabs[0].id
+  var tabs = await chrome.tabs.query({active: true, currentWindow: true})
+  return tabs[0].id
 }
 async function getTabUrl(){
   var tabs = await chrome.tabs.query({active: true, currentWindow: true})
